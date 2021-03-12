@@ -17,13 +17,24 @@ const linkToBob = async (path, param1, param2) => {
   const url = `wptbobpr://${path}?param1=${param1}&param2=${param2}`
 
   console.log('Path: ' + url);
-
+  let isPossibleOpenURL = false;
   try {
-    await Linking.openURL(url);
-    console.log("openURL resolved");
+    const isPossibleOpenURL = await Linking.canOpenURL(url);
+    console.log('isPossibleOpenURL='+isPossibleOpenURL);
+    if (isPossibleOpenURL) {
+      await Linking.openURL(url);
+      console.log("openURL resolved");
+    }
   } catch(e) {
-    console.log("openURL rejected");
+    console.log(isPossibleOpenURL ? "openURL rejection" : 'canOpenURL rejection');
     console.error(e);
+    if (isPossibleOpenURL) {
+      try {
+        await Linking.openSettings()
+      } catch(e) {
+        console.error(e)
+      }
+    }
   }
   console.log('Alice link to Bob Finish');
 }
