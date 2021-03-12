@@ -3,12 +3,24 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
 import * as Linking from 'expo-linking';
 
-const linkToBob = (path, param1, param2) => Linking.openURL(
-    Linking.createURL(path, {
-      param1: param1,
-      param2: param2
-    }, 'wptbobpr')
-)
+const linkToBob = async (path, param1, param2) => {
+  console.log('Creando path...')
+  const url = Linking.makeUrl(path, {
+    param1: param1,
+    param2: param2
+  }, 'wptbobpr');
+
+  console.log('Path: ' + url);
+  
+  try {
+    await Linking.openURL(url);
+    console.log("openURL resolved");
+  } catch(e) {
+    console.log("openURL rejected");
+    console.error(e);
+  }
+  console.log('Alice link to Bob Finish');
+}
 
 export default function App() {
 
