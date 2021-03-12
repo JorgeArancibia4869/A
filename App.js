@@ -5,6 +5,7 @@ import * as Linking from 'expo-linking';
 
 const linkToBob = async (path, param1, param2) => {
   console.log('Creando path...')
+  /*
   const url = Linking.createURL(path, {
     queryParams: {
       param1: param1,
@@ -12,6 +13,8 @@ const linkToBob = async (path, param1, param2) => {
     }, 
     scheme: 'wptbobpr'
   });
+  */
+  const url = `wptbobpr://${path}?param1=${param1}&param2=${param2}`
 
   console.log('Path: ' + url);
 
