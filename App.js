@@ -5,13 +5,16 @@ import * as Linking from 'expo-linking';
 
 const linkToBob = async (path, param1, param2) => {
   console.log('Creando path...')
-  const url = Linking.makeUrl(path, {
-    param1: param1,
-    param2: param2
-  }, 'wptbobpr');
+  const url = Linking.createURL(path, {
+    queryParams: {
+      param1: param1,
+      param2: param2
+    }, 
+    scheme: 'wptbobpr'
+  });
 
   console.log('Path: ' + url);
-  
+
   try {
     await Linking.openURL(url);
     console.log("openURL resolved");
