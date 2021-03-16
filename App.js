@@ -6,7 +6,7 @@ import * as Linking from 'expo-linking';
 
 const appsToLink = {
   ['Bob']: { scheme: 'wptbobpr', path: '/path2', username: 'Hola', token: 'Chao' },
-  ['AppConductor']: { scheme: 'wpt-driver-app', path: '/login', username: 'juanito', token: '1234567890' },
+  ['AppConductor']: { scheme: 'wptdriverapp', path: '/login', username: 'juanito', token: '1234567890' },
   clear: { scheme: '', path: '/', username: '', token: '' }
 };
 
