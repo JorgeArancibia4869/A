@@ -11,16 +11,6 @@ const appsToLink = {
 };
 
 const linkToBob = async (scheme, path, username, token) => {
-  console.log('Creando path...')
-  /*
-  const url = Linking.createURL(path, {
-    queryParams: {
-      username: username,
-      token: token
-    }, 
-    scheme: 'wptbobpr'
-  });
-  */
   const url = `${scheme}:/${path}?username=${username}&token=${token}`
 
   console.log('Path: ' + url);
